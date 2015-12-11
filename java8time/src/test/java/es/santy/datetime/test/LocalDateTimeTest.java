@@ -1,4 +1,4 @@
-package es.santy.localDateTime.test;
+package es.santy.datetime.test;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
