@@ -1,9 +1,11 @@
 package es.santy.datetime.test;
 
 import java.time.Clock;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
@@ -53,4 +55,29 @@ public class LocalDateTimeTest
 		LOG.info(zonedDateTime.getOffset());
 		Assert.assertTrue(zonedDateTime.getOffset().getTotalSeconds() == 3600);
 	}
+
+	@Test
+	public void hoursBetweenWithDurationTest()
+	{
+		LocalDateTime since = LocalDateTime.now(Clock.systemUTC());
+		LocalDateTime until = LocalDateTime.now();
+
+		long hours = Duration.between(since, until).toHours();
+
+		LOG.info("Hours diff " + hours);
+
+	}
+
+	@Test
+	public void hoursBetweenWithChronoUnitTest()
+	{
+		LocalDateTime since = LocalDateTime.now(Clock.systemUTC());
+		LocalDateTime until = LocalDateTime.now();
+
+		long hours = ChronoUnit.HOURS.between(since, until);
+
+		LOG.info("Hours diff " + hours);
+
+	}
+
 }
